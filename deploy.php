@@ -37,17 +37,19 @@ task('deploy:secrets', function () {
 
 // Production Server
 host('teletrabalho.net') // Name of the server
-->hostname('185.201.10.52:65002') // Hostname or IP address
+->hostname('185.201.10.52') // Hostname or IP address
+->port('65002')
 ->stage('production') // Deployment stage (production, staging, etc)
 ->user('u731098780') // SSH user
 ->set('deploy_path', '/public_html/laravel_ci_cd'); // Deploy path
 
 // Staging Server
-host('staging.myapp.io') // Name of the server
-->hostname('104.248.172.220') // Hostname or IP address
+host('teletrabalho.net') // Name of the server
+->hostname('185.201.10.52') // Hostname or IP address
+->port('65002')
 ->stage('staging') // Deployment stage (production, staging, etc)
-->user('root') // SSH user
-->set('deploy_path', '/var/www/my-app-staging'); // Deploy path
+->user('u731098780') // SSH user
+->set('deploy_path', '/public_html/laravel_ci_cd_stagging'); // Deploy path
 
 after('deploy:failed', 'deploy:unlock'); // Unlock after failed deploy
 
