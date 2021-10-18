@@ -35,7 +35,6 @@ task('deploy:secrets', function () {
     upload('.env', get('deploy_path') . '/shared');
 });
 
-
 // Production Server
 host('production') // Name of the server
 ->hostname('185.201.10.52') // Hostname or IP address
