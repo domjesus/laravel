@@ -38,7 +38,7 @@ task('deploy:secrets', function () {
 
 // Production Server
 host('production') // Name of the server
-->hostname('185.201.10.52') // Hostname or IP address
+->hostname('us-imm-web184.main-hosting.eu') // Hostname or IP address
 ->port('65002')
 ->stage('production') // Deployment stage (production, staging, etc)
 ->user('u731098780') // SSH user
