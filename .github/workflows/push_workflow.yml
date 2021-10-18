@@ -67,7 +67,7 @@ jobs:
   #         name: assets
   #         path: public
   deploy-production:
-    name: Deploy Project to PRODUCTION Server ${{ secrets.SSH_PRIVATE_KEY }}
+    name: Deploy Project to PRODUCTION Server
     runs-on: ubuntu-latest
     needs: [build-js-production]
     if: github.ref == 'refs/heads/master'
