@@ -36,7 +36,7 @@ task('deploy:secrets', function () {
 });
 
 // Production Server
-host('teletrabalho.net') // Name of the server
+host('production') // Name of the server
 ->hostname('185.201.10.52') // Hostname or IP address
 ->port('65002')
 ->stage('production') // Deployment stage (production, staging, etc)
