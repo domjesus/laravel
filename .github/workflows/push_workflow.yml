@@ -37,7 +37,7 @@ jobs:
   build-js-production:
     name: Build JavaScript/CSS for PRODUCTION Server
     runs-on: ubuntu-latest
-    needs: app-tests
+    # needs: app-tests
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v1
