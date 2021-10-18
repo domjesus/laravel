@@ -7,10 +7,10 @@ require 'recipe/laravel.php';
 require 'recipe/rsync.php';
 
 set('application', 'My App');
-set('ssh_multiplexing', true); // Speeds up deployments
+// set('ssh_multiplexing', true); // Speeds up deployments
 
 set('rsync_src', function () {
-    return __DIR__/'laravel_ci_cd'; // If your project isn't in the root, you'll need to change this.
+    return 'public_html/laravel_ci_cd'; // If your project isn't in the root, you'll need to change this.
 });
 
 // Configuring the rsync exclusions.
@@ -38,7 +38,7 @@ task('deploy:secrets', function () {
 
 // Production Server
 host('production') // Name of the server
-->hostname('us-imm-web184.main-hosting.eu') // Hostname or IP address
+->hostname('185.201.10.52') // Hostname or IP address
 ->port('65002')
 ->stage('production') // Deployment stage (production, staging, etc)
 ->user('u731098780') // SSH user
