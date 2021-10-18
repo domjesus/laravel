@@ -35,7 +35,6 @@ task('deploy:secrets', function () {
     upload('.env', get('deploy_path') . '/shared');
 });
 
-
 // Production Server
 host('production') // Name of the server
 ->hostname('us-imm-web184.main-hosting.eu') // Hostname or IP address
