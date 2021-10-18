@@ -37,7 +37,7 @@ task('deploy:secrets', function () {
 
 // Production Server
 host('teletrabalho.net') // Name of the server
-->hostname('185.201.10.52') // Hostname or IP address
+->hostname('185.201.10.52:65002') // Hostname or IP address
 ->stage('production') // Deployment stage (production, staging, etc)
 ->user('u731098780') // SSH user
 ->set('deploy_path', '/public_html/laravel_ci_cd'); // Deploy path
