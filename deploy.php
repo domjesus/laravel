@@ -4,28 +4,28 @@ namespace Deployer;
 
 // Include the Laravel & rsync recipes
 require 'recipe/laravel.php';
-// require 'recipe/rsync.php';
+require 'recipe/rsync.php';
 
 set('application', 'My App');
 set('ssh_multiplexing', true); // Speeds up deployments
 
-// set('rsync_src', function () {
-//     return 'public_html/laravel_ci_cd'; // If your project isn't in the root, you'll need to change this.
-// });
+set('rsync_src', function () {
+    return '~/public_html/laravel_ci_cd'; // If your project isn't in the root, you'll need to change this.
+});
 
 // Configuring the rsync exclusions.
 // You'll want to exclude anything that you don't want on the production server.
-// add('rsync', [
-//     'exclude' => [
-//         '.git',
-//         '/.env',
-//         '/storage/',
-//         '/vendor/',
-//         '/node_modules/',
-//         '.github',
-//         'deploy.php',
-//     ],
-// ]);
+add('rsync', [
+    'exclude' => [
+        '.git',
+        '/.env',
+        '/storage/',
+        '/vendor/',
+        '/node_modules/',
+        '.github',
+        'deploy.php',
+    ],
+]);
 
 
 // Set up a deployer task to copy secrets to the server.
@@ -61,7 +61,7 @@ task('deploy', [
     'deploy:prepare',
     'deploy:lock',
     'deploy:release',
-    // 'rsync', // Deploy code & built assets
+    'rsync', // Deploy code & built assets
     'deploy:secrets', // Deploy secrets
     'deploy:shared',
     'deploy:vendors',
