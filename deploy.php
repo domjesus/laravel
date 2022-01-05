@@ -42,7 +42,7 @@ host('production') // Name of the server
 ->port('65002')
 ->stage('production') // Deployment stage (production, staging, etc)
 ->user('u731098780') // SSH user
-->set('deploy_path', '~/public_html/laravel_ci_cd'); // Deploy path
+->set('deploy_path', '/public_html/laravel_ci_cd'); // Deploy path
 
 // Staging Server
 // host('teletrabalho.net') // Name of the server
