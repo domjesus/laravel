@@ -4,7 +4,7 @@ namespace Deployer;
 
 // Include the Laravel & rsync recipes
 require 'recipe/laravel.php';
-require 'recipe/rsync.php';
+// require 'recipe/rsync.php';
 
 set('application', 'My App');
 set('ssh_multiplexing', true); // Speeds up deployments
@@ -37,21 +37,22 @@ task('deploy:secrets', function () {
 
 // Production Server
 host('production') // Name of the server
+->set('remote_user','u731098780')
 ->hostname('185.201.10.52') // Hostname or IP address
 ->port('65002')
 ->stage('production') // Deployment stage (production, staging, etc)
 ->user('u731098780') // SSH user
-->set('deploy_path', 'public_html/laravel_ci_cd'); // Deploy path
+->set('deploy_path', '~/public_html/laravel_ci_cd'); // Deploy path
 
 // Staging Server
-host('teletrabalho.net') // Name of the server
-->hostname('185.201.10.52') // Hostname or IP address
-->port('65002')
-->stage('staging') // Deployment stage (production, staging, etc)
-->user('u731098780') // SSH user
-->set('deploy_path', 'public_html/laravel_ci_cd_stagging'); // Deploy path
+// host('teletrabalho.net') // Name of the server
+// ->set('remote_user','u731098780')
+// ->hostname('185.201.10.52') // Hostname or IP address
+// ->port('65002')
+// ->stage('staging') // Deployment stage (production, staging, etc)
+// ->user('u731098780') // SSH user
+// ->set('deploy_path', '~/public_html/laravel_ci_cd_stagging'); // Deploy path
 
-after('deploy:failed', 'deploy:unlock'); // Unlock after failed deploy
 
 desc('Deploy the application');
 
@@ -60,7 +61,7 @@ task('deploy', [
     'deploy:prepare',
     'deploy:lock',
     'deploy:release',
-    'rsync', // Deploy code & built assets
+    // 'rsync', // Deploy code & built assets
     'deploy:secrets', // Deploy secrets
     'deploy:shared',
     'deploy:vendors',
@@ -75,3 +76,5 @@ task('deploy', [
     'deploy:unlock',
     'cleanup',
 ]);
+
+after('deploy:failed', 'deploy:unlock'); // Unlock after failed deploy
